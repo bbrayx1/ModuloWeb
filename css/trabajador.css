@@ -1,0 +1,317 @@
+/* =========================================
+   RESET Y ESTILOS GENERALES
+========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   HEADER PRINCIPAL (VERDE TRABAJADOR)
+========================================= */
+.top-header {
+    background-color: #2e7d32; /* Verde Institucional */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 45px;
+    padding: 0 10px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu-icon {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-logo {
+    height: 35px;
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.header-text {
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.uns-text {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.udemsi-text {
+    font-size: 0.6em;
+    text-transform: uppercase;
+}
+
+.header-center {
+    font-weight: bold;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    text-align: center;
+    flex: 1;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-icon {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-logout {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 5px 15px;
+    font-size: 0.85em;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-logout:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* =========================================
+   SUB-HEADER (GRIS)
+========================================= */
+.sub-header {
+    background-color: #8c8c8c;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 10px;
+    font-size: 0.75em;
+    font-weight: bold;
+    border-bottom: 2px solid #666;
+}
+
+.sh-center {
+    text-decoration: underline;
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL Y SIDEBAR
+========================================= */
+.main-container {
+    display: flex;
+    min-height: calc(100vh - 65px);
+}
+
+.sidebar {
+    width: 90px;
+    background-color: #2b2b2b;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-avatar {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.user-avatar i {
+    font-size: 40px;
+    color: #fff;
+}
+
+.menu-title {
+    background-color: #2e7d32;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+    font-size: 0.8em;
+    font-weight: bold;
+    border-top: 1px solid #4caf50;
+    border-bottom: 1px solid #4caf50;
+}
+
+.sidebar-nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.65em;
+    border-bottom: 1px solid #444;
+    transition: background 0.2s;
+    text-align: center;
+    gap: 5px;
+}
+
+.nav-item i {
+    font-size: 20px;
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: #4a4a4a;
+    border-left: 3px solid #2e7d32;
+}
+
+/* =========================================
+   ÁREA DE CONTENIDO (TRABAJADOR)
+========================================= */
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+.page-title {
+    margin-top: 0;
+    color: #2e7d32;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Tarjetas (Cards) */
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+.card-header {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: #2e7d32;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Grid para información / KPIs */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.info-item {
+    background: #e8f5e9;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #c8e6c9;
+    text-align: center;
+}
+
+.info-item span {
+    display: block;
+    font-size: 0.85em;
+    color: #2e7d32;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.info-item strong {
+    font-size: 1.8em;
+    color: #1b5e20;
+}
+
+/* Botones y Tablas */
+.btn-primary {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.9em;
+}
+
+.btn-primary:hover {
+    background-color: #1b5e20;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+
+.custom-table th {
+    background: #f4f4f4;
+    border-bottom: 2px solid #ddd;
+    padding: 10px;
+}
+
+.custom-table td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
