@@ -1,0 +1,140 @@
+/* Reseteo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Barra Roja Superior */
+.top-bar {
+    width: 100%;
+    background-color: #d12030;
+    color: white;
+    text-align: left;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Logo */
+.logo-container {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.main-logo {
+    max-width: 400px;
+    height: auto;
+}
+
+/* Contenedor del Control de Acceso */
+.access-wrapper {
+    width: 100%;
+    max-width: 900px; /* Ancho total de las 3 columnas */
+}
+
+.access-header {
+    background-color: #d12030;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Cuadrícula de tarjetas */
+.cards-container {
+    display: flex;
+    width: 100%;
+}
+
+.card {
+    flex: 1; /* Las 3 tarjetas ocupan el mismo espacio */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding-top: 15px;
+    border: 1px solid white; /* Ligera separación visual */
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-divider {
+    width: 80%;
+    border: 0;
+    border-top: 2px solid white;
+    margin-bottom: 25px;
+}
+
+.icon-main {
+    font-size: 80px;
+    margin-bottom: 25px;
+}
+
+/* Botones de Ingresar */
+.btn-ingresar {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 40px;
+    border-radius: 25px; /* Forma de píldora */
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+/* Barra de Preguntas Frecuentes */
+.faq-bar {
+    width: 100%;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.faq-bar i {
+    margin-right: 5px;
+}
+
+.card-footer {
+    padding: 15px 10px;
+    font-size: 13px;
+    text-align: center;
+    min-height: 60px; /* Para que todas las columnas midan igual */
+}
+
+/* --- COLORES ESPECÍFICOS POR COLUMNA --- */
+
+/* ALUMNO */
+.card-alumno { background-color: #df0404; }
+.btn-alumno { background-color: #8b0000; }
+.btn-alumno:hover { background-color: #660000; }
+.faq-alumno { background-color: #a80000; }
+
+/* TRABAJADOR */
+.card-trabajador { background-color: #439539; }
+.btn-trabajador { background-color: #265c20; }
+.btn-trabajador:hover { background-color: #1b4217; }
+.faq-trabajador { background-color: #316d29; }
+
+/* EXTERNO */
+.card-externo { background-color: #1f82b8; }
+.btn-externo { background-color: #114e70; }
+.btn-externo:hover { background-color: #0c364d; }
+.faq-externo { background-color: #16648e; }

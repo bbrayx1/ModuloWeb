@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UDEMSI - Universidad Nacional del Santa</title>
+    <!-- Importamos FontAwesome para los íconos exactos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <!-- Barra superior -->
+    <header class="top-bar">
+        UNIDAD DE DESARROLLO, EVALUACION Y MANTENIMIENTO DE SISTEMAS DE INFORMACION - UDEMSI
+    </header>
+
+    <!-- Logo central -->
+    <div class="logo-container">
+        <!-- Asegúrate de tener tu imagen 'logo-uns.jpg' o '.png' en la carpeta img -->
+        <img src="img/logo-uns.png" alt="Logo UNS" class="main-logo">
+    </div>
+
+    <!-- Contenedor principal de tarjetas -->
+    <main class="access-wrapper">
+        <div class="access-header">
+            CONTROL DE ACCESO
+        </div>
+        
+        <div class="cards-container">
+            <!-- Columna 1: ALUMNO -->
+            <div class="card card-alumno">
+                <div class="card-title">ALUMNO</div>
+                <hr class="card-divider">
+                <i class="fa-solid fa-graduation-cap icon-main"></i>
+                <!-- Para el demo, este botón llevará a la siguiente pantalla -->
+                <a href="modulos.html" class="btn-ingresar btn-alumno">Ingresar</a>
+                <div class="faq-bar faq-alumno">
+                    <i class="fa-solid fa-circle-question"></i> PREGUNTAS FRECUENTES
+                </div>
+                <div class="card-footer">
+                    Módulos de apoyo para el alumno o exalumno de
+                </div>
+            </div>
+
+            <!-- Columna 2: TRABAJADOR -->
+            <div class="card card-trabajador">
+                <div class="card-title">TRABAJADOR</div>
+                <hr class="card-divider">
+                <i class="fa-solid fa-briefcase icon-main"></i>
+                <a href="#" class="btn-ingresar btn-trabajador">Ingresar</a>
+                <div class="faq-bar faq-trabajador">
+                    <i class="fa-solid fa-circle-question"></i> PREGUNTAS FRECUENTES
+                </div>
+                <div class="card-footer">
+                    Módulos de apoyo para la actividad docente y
+                </div>
+            </div>
+
+            <!-- Columna 3: EXTERNO -->
+            <div class="card card-externo">
+                <div class="card-title">EXTERNO</div>
+                <hr class="card-divider">
+                <i class="fa-solid fa-user icon-main"></i>
+                <a href="#" class="btn-ingresar btn-externo">Ingresar</a>
+                <div class="faq-bar faq-externo">
+                    <i class="fa-solid fa-circle-question"></i> PREGUNTAS FRECUENTES
+                </div>
+                <div class="card-footer">
+                    Módulos de apoyo para usuarios externos
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
