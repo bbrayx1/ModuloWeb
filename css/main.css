@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa; /* Fondo ligeramente gris para resaltar las tarjetas */
+}
+
+/* Barra superior de Módulos */
+.top-bar-modulos {
+    background-color: #d12030;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.user-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.btn-volver {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-volver:hover {
+    text-decoration: underline;
+}
+
+/* Contenedor de la Cuadrícula */
+.modulos-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+    gap: 15px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Diseño de cada Tarjeta */
+.modulo-card {
+    background-color: white;
+    border: 3px solid #8b0000; /* Borde rojo oscuro característico */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+    text-align: center;
+}
+
+/* Para destacar tu proyecto visualmente en el demo (opcional) */
+.card-proyecto {
+    box-shadow: 0 0 15px rgba(209, 32, 48, 0.4);
+    transform: scale(1.02);
+    transition: transform 0.3s;
+}
+
+.icon-modulo {
+    font-size: 45px;
+    color: #8b0000;
+    margin-bottom: 15px;
+}
+
+/* Botón Rojo Central */
+.btn-modulo {
+    background-color: #d12030;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    width: 90%;
+    padding: 12px;
+    border-radius: 20px; /* Bordes redondeados como en la imagen */
+    margin-bottom: 15px;
+    display: block;
+    transition: background-color 0.2s;
+}
+
+.btn-modulo:hover {
+    background-color: #a81724;
+}
+
+/* Enlace del manual */
+.link-manual {
+    color: #8b0000;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.link-manual:hover {
+    text-decoration: underline;
+}
+
+/* Descripción inferior */
+.desc-modulo {
+    font-size: 12px;
+    color: #333;
+    font-weight: bold;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    width: 100%;
+}
