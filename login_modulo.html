@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logueo Módulo - UDEMSI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/login_modulo.css">
+</head>
+<body>
+
+    <div class="modal-container">
+        <!-- Logo y Cabecera -->
+        <div class="modal-header">
+            <img src="img/logo-uns.png" alt="Logo UNS" class="modal-logo">
+        </div>
+
+        <!-- Títulos del Módulo -->
+        <div class="module-title">COMEDOR UNIVERSITARIO</div>
+        <div class="logueo-bar">LOGUEO</div>
+
+        <!-- Formulario -->
+        <!-- Al validar, nos lleva a la vista principal del estudiante -->
+        <form action="estudiante.html" method="GET" class="login-form">
+            
+            <!-- Campo Código -->
+            <div class="input-group">
+                <span class="icon-box"><i class="fa-solid fa-user"></i></span>
+                <input type="text" placeholder="INGRESE CODIGO *" required>
+            </div>
+
+            <!-- Campo DNI -->
+            <div class="input-group">
+                <span class="icon-box"><i class="fa-solid fa-id-card"></i></span>
+                <input type="text" placeholder="INGRESE DNI *" required>
+            </div>
+
+            <!-- Campo Contraseña -->
+            <div class="input-group">
+                <span class="icon-box"><i class="fa-solid fa-lock"></i></span>
+                <input type="password" placeholder="INGRESE CONTRASEÑA *" required>
+                <span class="icon-eye"><i class="fa-solid fa-eye"></i></span>
+            </div>
+
+            <!-- Botón de Acceso -->
+            <button type="submit" class="btn-validar">VALIDAR ACCESO</button>
+        </form>
+
+        <!-- Pie de página con versión -->
+        <div class="modal-footer">
+            PRODUCCION@UDEMSI Vr. 1.0.4
+        </div>
+    </div>
+
+</body>
+</html>
