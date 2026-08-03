@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logueo Módulo - UDEMSI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/login_modulo.css">
+</head>
+<body>
+
+    <div class="modal-container">
+        <div class="modal-header">
+            <img src="/static/img/logo-uns.png" alt="Logo UNS" class="modal-logo">
+        </div>
+
+        <div class="module-title">COMEDOR UNIVERSITARIO</div>
+        <div class="logueo-bar">LOGUEO</div>
+
+        <form class="login-form">
+            <div class="input-group">
+                <span class="icon-box"><i class="fa-solid fa-user"></i></span>
+                <input type="text" id="codigo_usuario" placeholder="INGRESE CODIGO *" required>
+            </div>
+
+            <div class="input-group">
+                <span class="icon-box"><i class="fa-solid fa-id-card"></i></span>
+                <input type="text" placeholder="INGRESE DNI *" required>
+            </div>
+
+            <div class="input-group">
+                <span class="icon-box"><i class="fa-solid fa-lock"></i></span>
+                <input type="password" placeholder="INGRESE CONTRASEÑA *" required>
+                <span class="icon-eye"><i class="fa-solid fa-eye"></i></span>
+            </div>
+
+            <button type="button" id="btn_ingresar" class="btn-validar">VALIDAR ACCESO</button>
+        </form>
+
+        <div class="modal-footer">
+            PRODUCCION@UDEMSI Vr. 1.0.4
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('btn_ingresar').addEventListener('click', function(e) {
+            e.preventDefault(); 
+            const codigo = document.getElementById('codigo_usuario').value;
+            
+            if(codigo.trim() === '') {
+                alert("Por favor, ingrese su código."); return;
+            }
+
+            fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ codigo: codigo })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === 'success') {
+                    localStorage.setItem('usuario_activo', data.codigo);
+                    window.location.href = '/modulo/estudiante';
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

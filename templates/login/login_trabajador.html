@@ -5,50 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logueo Comedor - Trabajador</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Archivo CSS exclusivo para el logueo del trabajador -->
-    <link rel="stylesheet" href="../css/login_trabajador.css">
+    <link rel="stylesheet" href="/static/css/login_trabajador.css">
 </head>
 <body>
 
     <div class="login-card">
-        <!-- Logo -->
         <div class="logo-container">
-            <img src="../img/logo-uns.png" alt="Logo UNS">
+            <img src="/static/img/logo-uns.png" alt="Logo UNS">
         </div>
         
-        <!-- Cabecera del formulario -->
         <div class="separator"></div>
         <div class="module-title">WEB COMEDOR UNIVERSITARIO</div>
         <div class="logueo-bar">LOGUEO</div>
 
-        <!-- Formulario de logueo corregido con la ruta hacia evaluador.html -->
-        <form action="../evaluador.html" method="GET">
-            
-            <!-- Campo Usuario -->
+        <form action="/modulo/trabajador" method="GET">
             <div class="input-group">
                 <span class="icon-box"><i class="fa-solid fa-user"></i></span>
                 <input type="text" placeholder="INGRESE USUARIO *" required>
             </div>
 
-            <!-- Campo IDCard -->
             <div class="input-group">
                 <span class="icon-box"><i class="fa-solid fa-id-card-clip"></i></span>
                 <input type="text" placeholder="INGRESE IDCARD *" required>
             </div>
 
-            <!-- Campo Contraseña -->
             <div class="input-group">
                 <span class="icon-box"><i class="fa-solid fa-lock"></i></span>
                 <input type="password" placeholder="INGRESE CONTRASEÑA *" required>
                 <span class="icon-eye"><i class="fa-solid fa-eye"></i></span>
             </div>
 
-            <!-- Botón -->
             <button type="submit" class="btn-validar">VALIDAR ACCESO</button>
         </form>
 
-        <!-- Footer versión -->
         <div class="modal-footer">
             PRODUCCION@UDEMSI Vr. 1.0.3Y
         </div>
