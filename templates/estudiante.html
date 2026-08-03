@@ -1,445 +1,224 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>SIIGAA - Módulo Comedor Alumno</title>
-
     <link rel="stylesheet" href="/static/css/estudiante.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-
         /* ESTILOS AVANZADOS PARA SPA Y DISEÑO SIIGAA (INTACTOS) */
-
         .btn-disabled { background-color: #a3a3a3 !important; cursor: not-allowed !important; }
-
         .file-hidden { display: none; }
-
         .upload-success { color: #28a745; font-weight: bold; display: flex; align-items: center; }
-
         .upload-pending { color: #dc3545; font-weight: bold; }
-
         .alert-error { background: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px; display: none; border-left: 5px solid #d9534f; }
-
-       
-
+        
         /* Ocultar secciones no activas */
-
         .content-section { display: none; animation: fadeIn 0.4s ease-in-out; }
-
         .content-section.active-section { display: block; }
-
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-
-
         /* Ajuste de grillas Inicio */
-
         .info-grid-large { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-
         .info-item { border: 1px solid #eaeaea; padding: 15px; border-radius: 5px; background: #fafafa; }
-
         .info-item span { display: block; font-size: 0.85em; color: #666; text-transform: uppercase; margin-bottom: 5px; }
-
         .info-item strong { font-size: 1.1em; color: #222; display: block; }
 
-
-
         /* Diseño Ficha Socioeconómica SIIGAA */
-
         .ficha-section { margin-bottom: 25px; border: 1px solid #ddd; border-radius: 5px; overflow: hidden; background: #fff; }
-
         .ficha-title { background: #d10000; color: #fff; padding: 8px 15px; font-weight: bold; font-size: 1.1em; display: flex; align-items: center; gap: 10px; }
-
         .ficha-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px; }
-
         .ficha-field { display: flex; flex-direction: column; gap: 5px; }
-
         .ficha-field label { font-size: 0.9em; color: #555; }
-
         .ficha-field input[type="text"] { padding: 8px; border: 1px solid #ccc; border-radius: 4px; background: #f9f9f9; color: #333; font-weight: 500; cursor: not-allowed; }
-
         .ficha-instrucciones { background: #fdfdfd; border-left: 4px solid #d10000; padding: 15px; font-size: 0.9em; color: #444; }
 
-
-
         /* Documentos */
-
         .guidelines-box { background: #eef2f5; border-left: 5px solid #0056b3; padding: 15px; margin-bottom: 20px; border-radius: 4px; }
-
         .guidelines-box h4 { margin-top: 0; color: #0056b3; margin-bottom: 10px; font-size: 1.1em;}
-
         .guidelines-box ul { margin: 0; padding-left: 20px; font-size: 0.9em; color: #333; }
-
         .thumbnail-preview { width: 45px; height: 45px; object-fit: cover; border-radius: 6px; border: 1px solid #ccc; margin-left: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-
         .pdf-icon-preview { font-size: 2.2em; color: #d10000; margin-left: 15px; }
-
     </style>
-
 </head>
-
 <body>
 
-
-
     <header class="top-header">
-
         <div class="header-left">
-
             <i class="fas fa-bars menu-icon"></i>
-
             <div class="logo-container">
-
                 <img src="/static/img/logo-uns.png" alt="UNS Logo" class="header-logo" onerror="this.src='https://via.placeholder.com/40'">
-
                 <div class="header-text"><span class="uns-text">UNS</span><span class="udemsi-text">UDEMSI<br>SIIGAA</span></div>
-
             </div>
-
         </div>
-
         <div class="header-center">DIRECCIÓN DE EVALUACIÓN Y DESARROLLO ACADÉMICO</div>
-
         <div class="header-right">
-
-            <a href="/" onclick="localStorage.removeItem('usuario_activo');" style="text-decoration: none;"><button class="btn-logout"><i class="fas fa-sign-out-alt"></i> CERRAR SESION</button></a>
-
+            <!-- AQUÍ ESTÁ EL CAMBIO LIGERO: SE AÑADIÓ title="Salir del sistema" -->
+            <a href="/" onclick="localStorage.removeItem('usuario_activo');" style="text-decoration: none;" title="Salir del sistema"><button class="btn-logout"><i class="fas fa-sign-out-alt"></i> CERRAR SESION</button></a>
         </div>
-
     </header>
 
-
-
     <div class="sub-header">
-
         <div class="sh-left"><i class="fas fa-thumbs-up"></i> PRESENTACIÓN</div>
-
         <div class="sh-center">BIENVENIDO AL MÓDULO DE WEB ALUMNO</div>
-
         <div class="sh-right"><i class="fas fa-user"></i> <span id="display-codigo">Cargando...</span></div>
-
     </div>
-
-
 
     <div class="main-container">
-
-       
-
+        
         <aside class="sidebar">
-
             <div class="user-avatar"><i class="fas fa-user-circle" style="font-size: 3em; margin-bottom: 10px;"></i></div>
-
             <div class="menu-title">MENÚ</div>
-
             <nav class="sidebar-nav">
-
                 <a href="javascript:void(0)" class="nav-item active" id="nav-inicio" onclick="cambiarSeccion('inicio')"><i class="fas fa-home"></i><span>INICIO</span></a>
-
                 <a href="javascript:void(0)" class="nav-item" id="nav-ficha" onclick="cambiarSeccion('ficha')"><i class="fas fa-id-card"></i><span>FICHA SOC.</span></a>
-
                 <a href="javascript:void(0)" class="nav-item" id="nav-docs" onclick="cambiarSeccion('docs')"><i class="fas fa-upload"></i><span>DOCUMENTOS</span></a>
-
             </nav>
-
         </aside>
 
-
-
         <main class="main-content">
-
             <h1 class="page-title"><i class="fas fa-utensils"></i> Admisión al Servicio de Comedor Universitario</h1>
-
-           
-
+            
             <div id="error-banner" class="alert-error">
-
                 <strong><i class="fas fa-exclamation-triangle"></i> Acceso Denegado:</strong> Código no registrado.
-
             </div>
-
-
 
             <div id="sec-inicio" class="content-section active-section">
-
                 <div class="card">
-
                     <div class="card-header" style="background: #fff; color: #d10000; border-bottom: 1px solid #ddd; font-size: 1.2em;"><i class="fas fa-graduation-cap"></i> Evaluación Académica (Art. 21)</div>
-
                     <div class="info-grid-large" style="margin-top: 15px;">
-
                         <div class="info-item"><span>Postulante</span><strong id="val-nombre">...</strong></div>
-
                         <div class="info-item"><span>Condición</span><strong id="val-condicion">...</strong></div>
-
                         <div class="info-item"><span>Promedio Ponderado</span><strong id="val-promedio">...</strong></div>
-
                         <div class="info-item"><span>Puntaje Académico</span><strong id="val-p-acad" style="color: #0056b3;">... Pts</strong></div>
-
                     </div>
-
                 </div>
-
-
 
                 <div class="card">
-
                     <div class="card-header" style="background: #fff; color: #d10000; border-bottom: 1px solid #ddd; font-size: 1.2em;"><i class="fas fa-home"></i> Ficha Socioeconómica Extraída (Art. 20)</div>
-
                     <p style="font-size: 0.9em; color: #555; margin: 15px 0;">Datos sincronizados de su última declaración en la Unidad de Servicio Social.</p>
-
                     <div class="info-grid-large">
-
                         <div class="info-item"><span>Lugar de Residencia</span><strong id="val-residencia">...</strong></div>
-
                         <div class="info-item"><span>Carga Familiar</span><strong id="val-carga">...</strong></div>
-
                         <div class="info-item"><span>Ingreso Familiar Mín.</span><strong id="val-ingresos">...</strong></div>
-
                         <div class="info-item"><span>Ocupación Apoderado</span><strong id="val-ocupacion">...</strong></div>
-
                         <div class="info-item"><span>Puntaje Socioeconómico</span><strong id="val-p-socio" style="color: #0056b3;">... Pts</strong></div>
-
                     </div>
-
-                   
-
+                    
                     <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed #ccc; text-align: right;">
-
                         <span style="font-size: 1.2em; color: #444;">PUNTAJE TOTAL PREVISTO: </span>
-
                         <strong id="val-puntaje-total" style="font-size: 2em; color: #d10000;">... Pts</strong>
-
                     </div>
-
                 </div>
-
                 <div style="text-align: right;">
-
                     <button class="btn-primary" onclick="cambiarSeccion('docs')">Continuar a Documentos <i class="fas fa-arrow-right"></i></button>
-
                 </div>
-
             </div>
-
-
 
             <div id="sec-ficha" class="content-section">
-
                 <div class="card" style="display: grid; grid-template-columns: 3fr 1fr; gap: 20px; background: transparent; box-shadow: none; padding: 0;">
-
-                   
-
+                    
                     <div class="formularios-siigaa">
-
                         <div class="ficha-section">
-
                             <div class="ficha-title">1. Sección Datos Personales</div>
-
                             <div class="ficha-grid">
-
                                 <div class="ficha-field"><label>Nombres y Apellidos:</label><input type="text" id="f-nombres" readonly></div>
-
                                 <div class="ficha-field"><label>Lugar de Procedencia:</label><input type="text" id="f-procedencia" readonly></div>
-
                             </div>
-
                         </div>
-
                         <div class="ficha-section">
-
                             <div class="ficha-title">2. Sección Datos Familiares</div>
-
                             <div class="ficha-grid">
-
                                 <div class="ficha-field"><label>Estado Civil de los Padres / Procedencia:</label><input type="text" id="f-procfam" readonly></div>
-
                                 <div class="ficha-field"><label>Carga Familiar (Dependientes):</label><input type="text" id="f-cargafam" readonly></div>
-
                             </div>
-
                         </div>
-
                         <div class="ficha-section">
-
                             <div class="ficha-title">3. Sección Datos de Situación Económica</div>
-
                             <div class="ficha-grid">
-
                                 <div class="ficha-field"><label>Condición Ocupacional del Apoderado:</label><input type="text" id="f-ocupacion" readonly></div>
-
                                 <div class="ficha-field"><label>Ingreso Económico Familiar (S/):</label><input type="text" id="f-ingresofam" readonly></div>
-
                             </div>
-
                         </div>
-
                         <div class="ficha-section">
-
                             <div class="ficha-title">4. Sección Datos de Vivienda</div>
-
                             <div class="ficha-grid">
-
                                 <div class="ficha-field"><label>Lugar de Residencia Actual:</label><input type="text" id="f-residencialugar" readonly></div>
-
                             </div>
-
                         </div>
-
                     </div>
-
-
 
                     <div class="ficha-instrucciones">
-
                         <h3 style="color: #d10000; margin-top: 0;">Instrucciones:</h3>
-
                         <p>Los datos mostrados en esta pantalla son de <strong>solo lectura</strong>, ya que han sido sincronizados con su expediente del SIIGAA.</p>
-
                         <p><strong>NOTA IMPORTANTE:</strong><br>La información registrada tiene carácter de declaración jurada. Esta información es la que el sistema utiliza automáticamente para calcular su puntaje socioeconómico de acuerdo al Artículo 20 del Reglamento de Comedor Universitario.</p>
-
                     </div>
 
-
-
                 </div>
-
             </div>
-
-
 
             <div id="sec-docs" class="content-section">
-
                 <div class="card">
-
                     <div class="card-header"><i class="fas fa-file-upload"></i> Expediente Digital Complementario</div>
-
-                   
-
+                    
                     <div class="guidelines-box">
-
                         <h4><i class="fas fa-info-circle"></i> Recomendaciones para subir sus documentos:</h4>
-
                         <ul>
-
                             <li><strong>Formato aceptado:</strong> Solo archivos PDF o imágenes (JPG, PNG) nítidas.</li>
-
                             <li><strong>Alineación:</strong> Asegúrese de que las fotografías estén tomadas desde arriba, sin recortes en los bordes y con buena iluminación.</li>
-
                             <li><strong>Tamaño:</strong> El peso máximo por archivo no debe superar los 5MB.</li>
-
                             <li><strong>Veracidad:</strong> Cualquier alteración en los recibos o constancias anulará automáticamente su postulación.</li>
-
                         </ul>
-
                     </div>
-
-                   
-
+                    
                     <table class="custom-table">
-
                         <thead><tr><th>Documento Requerido</th><th>Estado / Vista Previa</th><th>Acción</th></tr></thead>
-
                         <tbody>
-
                             <tr>
-
                                 <td>Constancia de ingresos económicos (Padre/Tutor)</td>
-
                                 <td id="estado-doc-1" class="upload-pending">Pendiente <span id="preview-1"></span></td>
-
                                 <td>
-
                                     <input type="file" id="file-1" class="file-hidden" accept="image/*,.pdf">
-
                                     <button class="btn-primary btn-upload" onclick="document.getElementById('file-1').click()"><i class="fas fa-upload"></i> Adjuntar</button>
-
                                 </td>
-
                             </tr>
-
                             <tr>
-
                                 <td>Declaración jurada notarial de insolvencia</td>
-
                                 <td id="estado-doc-2" class="upload-pending">Pendiente <span id="preview-2"></span></td>
-
                                 <td>
-
                                     <input type="file" id="file-2" class="file-hidden" accept="image/*,.pdf">
-
                                     <button class="btn-primary btn-upload" onclick="document.getElementById('file-2').click()"><i class="fas fa-upload"></i> Adjuntar</button>
-
                                 </td>
-
                             </tr>
-
                             <tr>
-
                                 <td>Recibo de luz o agua (Último mes)</td>
-
                                 <td id="estado-doc-3" class="upload-pending">Pendiente <span id="preview-3"></span></td>
-
                                 <td>
-
                                     <input type="file" id="file-3" class="file-hidden" accept="image/*,.pdf">
-
                                     <button class="btn-primary btn-upload" onclick="document.getElementById('file-3').click()"><i class="fas fa-upload"></i> Adjuntar</button>
-
                                 </td>
-
                             </tr>
-
                             <tr>
-
                                 <td>Croquis de ubicación de vivienda</td>
-
                                 <td id="estado-doc-4" class="upload-pending">Pendiente <span id="preview-4"></span></td>
-
                                 <td>
-
                                     <input type="file" id="file-4" class="file-hidden" accept="image/*,.pdf">
-
                                     <button class="btn-primary btn-upload" onclick="document.getElementById('file-4').click()"><i class="fas fa-upload"></i> Adjuntar</button>
-
                                 </td>
-
                             </tr>
-
                         </tbody>
-
                     </table>
-
                 </div>
-
-               
-
+                
                 <div style="text-align: right; margin-bottom: 40px; margin-top: 20px;">
-
                     <button id="btn-final" class="btn-primary btn-disabled" style="font-size: 1.1em; padding: 12px 25px;" disabled><i class="fas fa-paper-plane"></i> Faltan Documentos por Subir</button>
-
                 </div>
-
             </div>
 
-
-
         </main>
-
     </div>
 
-
-
     <script src="/static/js/estudiante.js"></script>
-
 </body>
-
 </html>
